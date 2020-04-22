@@ -38,7 +38,7 @@ class Range:
 
     def __contains__(self, value):
         """Return True if the given value is in the sequence"""
-        index = (value - self._start) / self._step
+        index = (value - self._start) / self._step   #like hash value
         if not 0 <= index < self._length:
             return False
         return True
@@ -49,5 +49,5 @@ if __name__ == "__main__":
         print(item)
     for item in Range(-9, -3, 2.5):
         print(item)
-    if -9 in Range(-9, -3, 2.5):
-        print("-9 is in it")
+    if 99999 in Range(10000000):
+        print("99999 is in 10000000")

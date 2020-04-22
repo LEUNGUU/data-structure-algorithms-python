@@ -64,7 +64,7 @@ class Vector:
             result = Vector(len(self))
             for j in range(len(self)):
                 result[j] = self[j] * operand[j]
-            return result
+            return sum(result)
         else:
             result = Vector(len(self))
             for j in range(len(self)):
