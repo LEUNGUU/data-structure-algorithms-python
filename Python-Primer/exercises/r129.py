@@ -11,5 +11,12 @@ def words(letters, word=''):
         print('while loop, letters: ', letters)
         words(letters - {letter}, word + letter)
 
+
 if __name__ == '__main__':
-    print(words(set('catdog')))
+    # print(words(set('catdog')))
+    from itertools import permutations
+    s = 'catdog'
+    for i in range(len(s)):
+        for x in permutations(s, i + 1):
+            print(''.join(x))
+

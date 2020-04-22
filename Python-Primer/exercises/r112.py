@@ -4,9 +4,9 @@
 from random import randrange
 
 
+#hints: Use randrange to pick the index of the chosen element.
 def ownVersionChoice(arr:list) -> int:
-    sortedArr = sorted(arr)
-    return randrange(sortedArr[0], len(arr))
+    return randrange(0, len(arr))
     
 
 if __name__ == '__main__':

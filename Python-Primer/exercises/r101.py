@@ -3,7 +3,7 @@
 
 
 def is_multiple(n:int, m:int) -> bool:
-    if type(n) is int and type(m) is int:
+    if isinstance(n, int) and isinstance(m, int):
         return "n is multiple of m" if n % m == 0 else "n is not multiple of m"
     else:
         return "input data must be integer!"

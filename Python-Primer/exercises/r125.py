@@ -13,7 +13,11 @@ def removePunctuation(a:str) -> str:
             res.append(item)
     return ''.join(res)
 
+def remove_punctuation(s:str) -> str:
+    return ''.join(ch for ch in s if ch.isalnum() or ch.isspace())
+
 
 if __name__ == '__main__':
     print("Let's try, \n Mike.")
     print(removePunctuation("Let's try, \n Mike."))
+    print(remove_punctuation("Let's try, \n Mike."))

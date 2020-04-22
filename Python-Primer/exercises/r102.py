@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 
+# Hints: Use bit opertions
 def is_even(k:int) -> bool:
-    return True if (-1)**k == 1 else False
-
+    return not k & 1
 
 if __name__ == '__main__':
     print(is_even(9))

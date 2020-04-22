@@ -3,7 +3,7 @@
 
 
 def square(n:int) -> list:
-    if type(n) is int:
+    if isinstance(n, int):
         return [item**2 for item in range(1, n)]
     else:
         return "only support integer!"

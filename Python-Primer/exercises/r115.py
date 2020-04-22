@@ -3,11 +3,7 @@
 
 
 def distinctFromEachOther(a:list) -> bool:
-    temp = {item for item in a}
-    if len(temp) == len(a):
-        return True
-    else:
-        return False
+    return True if len(a) == len(set(a)) else False
         
 
 if __name__ == '__main__':
