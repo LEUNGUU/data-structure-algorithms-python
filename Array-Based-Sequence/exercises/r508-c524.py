@@ -49,6 +49,7 @@ def pop_average(n, mode="start"):
     end = time()
     return (end - start) * 1000000 / n
 
+
 def remove_average(n, mode="start"):
     data = [None] * n
     start = time()
@@ -58,15 +59,13 @@ def remove_average(n, mode="start"):
     elif mode == "middle":
         count = n
         while count > 0:
-            data.remove(data[count//2])
+            data.remove(data[count // 2])
             count -= 1
     elif mode == "end":
         for _ in range(n):
             data.remove(data[-1])
     end = time()
     return (end - start) * 1000000 / n
-
-
 
 
 if __name__ == "__main__":

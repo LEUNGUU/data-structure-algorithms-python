@@ -3,6 +3,7 @@
 
 from time import time
 
+
 def list_comprehension(n):
     return ["a" for _ in range(n)]
 
