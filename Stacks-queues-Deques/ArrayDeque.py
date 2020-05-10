@@ -34,7 +34,7 @@ class ArrayDeque:
         """
         if self.is_empty():
             raise Empty("Deque is empty")
-        return self._data(self._front)
+        return self._data[self._front]
 
     def last(self):
         """Return (but do not remove) the element at the end of the queue.
@@ -43,7 +43,7 @@ class ArrayDeque:
         """
         if self.is_empty():
             raise Empty("Deque is empty")
-        back = (self._front + self._size - 1) // len(self._data)
+        back = (self._front + self._size - 1) % len(self._data)
         return self._data[back]
 
     def delete_first(self):
@@ -69,7 +69,7 @@ class ArrayDeque:
         """
         if self.is_empty():
             raise Empty("Deque is empty")
-        back = (self._front + self._size - 1) // len(self._data)
+        back = (self._front + self._size - 1) % len(self._data)
         answer = self._data[back]
         self._data[back] = None
         self._size -= 1
@@ -81,7 +81,7 @@ class ArrayDeque:
     def add_last(self, e):
         """Add an element to the back in Deque"""
         if self._size == len(self._data):
-            self._resize(2 * len(self.data))
+            self._resize(2 * len(self._data))
         avail = (self._front + self._size) % len(self._data)
         self._data[avail] = e
         self._size += 1
@@ -89,7 +89,7 @@ class ArrayDeque:
     def add_first(self, e):
         """Add an element to the first in Deque"""
         if self._size == len(self._data):
-            self._resize(2 * len(self.data))
+            self._resize(2 * len(self._data))
         self._front = (self._front - 1) % len(self._data)
         self._data[self._front] = e
         self._size += 1
@@ -106,4 +106,10 @@ class ArrayDeque:
 
 
 if __name__ == "__main__":
-    pass
+    AD = ArrayDeque()
+    AD.add_first(1)
+    AD.add_last(2)
+    print(AD.first())
+    print(AD.last())
+    print(AD.delete_last())
+    print(AD.delete_first())
