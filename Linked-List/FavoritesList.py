@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from PositionalList import PositionalList
+
 
 class FavoritesList:
     """List of elements ordered from most frequently accesse to least"""
@@ -33,7 +35,7 @@ class FavoritesList:
                     and cnt > self._data.before(walk).element()._count
                 ):
                     walk = self._data.before(walk)
-                self._data.add_before(walk, self, _data.delete(p))
+                self._data.add_before(walk, self._data.delete(p))
 
     # ---------------------------  public methods --------------------------
     def __init__(self):
@@ -108,4 +110,11 @@ class FavoritesListMTF(FavoritesList):
 
 
 if __name__ == "__main__":
-    pass
+    import random
+
+    fl = FavoritesList()
+    for i in range(10):
+        option = random.choice(["me", "her", "him"])
+        fl.access(option)
+    for item in fl.top(2):
+        print(item)

@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from _DoublyLinkedBase import _DoublyLinkedBase
+
 
 class PositionalList(_DoublyLinkedBase):
     """A sequential container of elements allowing positional access"""
@@ -35,6 +37,7 @@ class PositionalList(_DoublyLinkedBase):
             raise ValueError("p does not belong to this container")
         if p._node._next is None:
             raise ValueError("p is no longer valid")
+        return p._node
 
     # ----------------------------- utility method -----------------------
     def _make_position(self, node):
@@ -128,4 +131,8 @@ def insertion_sort(L):
 
 
 if __name__ == "__main__":
-    pass
+    pl = PositionalList()
+    for i in range(10):
+        pl.add_last(i)
+    print(pl.first().element())
+    print(pl.after(pl.first()))
