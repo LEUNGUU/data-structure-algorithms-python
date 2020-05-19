@@ -55,6 +55,78 @@ class Tree:
         """Return True if the tree is empty"""
         return len(self) == 0
 
+    def depth(self, p):
+        """Return the number of levels separating Position p from the root"""
+        if self.is_root(p):
+            return 0
+        return 1 + self.depth(self.parent(p))
+
+    def _height1(self):
+        """Return the height of the tree"""
+        return max(self.depth(p) for p in self.positions() if self.is_leaf(p))
+
+    def _height2(self, p):
+        """Return the height of the subtree rooted at Position p"""
+        if self.is_leaf(p):
+            return 0
+        else:
+            return 1 + max(self._height2(c) for c in self.children(p))
+
+    def height(self, p=None):
+        """Return the height of the subtree rooted at Position p.
+        if p is None, return the height of the entire tree
+        """
+
+        if p is None:
+            p = self.root()
+        return self._height2(p)
+
+    def __iter__(self):
+        """Generate an iteration of the tree's elements"""
+        for p in self.positions():
+            yield p.element()
+
+    def positions(self):
+        """Generate an iteration of the tree's positions"""
+        return self.preorder()
+
+    def preorder(self):
+        """Generate a preorder iteration of positions in the tree"""
+        if not self.is_empty():
+            for p in self._subtree_preorder(self.root()):
+                yield p
+
+    def _subtree_preorder(self, p):
+        """Generate a preorder iteration of positions in subtree rooted at p"""
+        yield p
+        for c in self.children(p):
+            for other in self._subtree_preorder(c):
+                yield other
+
+    def postorder(self):
+        """Generate a postorder iteration of positions in the tree"""
+        if not self.is_empty():
+            for p in self._subtree_postorder(self.root()):
+                yield p
+
+    def _subtree_postorder(seflf, p):
+        """Generate a postorder iteration of positions in subtree rooted at p"""
+        for c in self.children(p):
+            for other in self._subtree_postorder(c):
+                yield other
+        yield p
+
+    def breadthfirst(self):
+        """Generate a breadthfirst iteration of the positions of the tree"""
+        if not self.is_empty():
+            fringe = LinkedQueue()
+            fringe.enqueue(self.root())
+            while not fringe.is_empty():
+                p = fringe.dequeue()
+                yield p
+                for c in self.children(p):
+                    fringe.enqueue(c)
+
 
 if __name__ == "__main__":
     pass
