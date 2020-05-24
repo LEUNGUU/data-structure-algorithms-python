@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 
+from BinaryTree import BinaryTree
+
 class LinkedBinaryTree(BinaryTree):
     """Linked representing of a binary tree structure"""
 
@@ -18,7 +20,7 @@ class LinkedBinaryTree(BinaryTree):
         """An abstraction representing the location of a single element"""
 
         def __init__(self, container, node):
-            """Constuctor should notbe invoked by user"""
+            """Constuctor should not be invoked by user"""
             self._container = container
             self._node = node
 

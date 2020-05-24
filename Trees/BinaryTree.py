@@ -39,7 +39,7 @@ class BinaryTree(Tree):
         """Generate an iteration of Position representing p's children"""
         if self.left(p) is not None:
             yield self.left(p)
-        if self.right(p) is None:
+        if self.right(p) is not None:
             yield self.right(p)
 
     def inorder(self):
@@ -60,7 +60,9 @@ class BinaryTree(Tree):
 
     def positions(self):
         """Generate an iteration of the tree's positions"""
-        return self.preorder()
+        #return self.preorder()
+        #return self.postorder()
+        return self.inorder()
 
 
 if __name__ == "__main__":

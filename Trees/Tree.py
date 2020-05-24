@@ -49,7 +49,7 @@ class Tree:
 
     def is_leaf(self, p):
         """Return True if Position p does not have any children"""
-        return self.num_children(p)
+        return self.num_children(p) == 0
 
     def is_empty(self):
         """Return True if the tree is empty"""
@@ -88,7 +88,8 @@ class Tree:
 
     def positions(self):
         """Generate an iteration of the tree's positions"""
-        return self.preorder()
+        #return self.preorder()
+        return self.postorder()
 
     def preorder(self):
         """Generate a preorder iteration of positions in the tree"""
@@ -109,7 +110,7 @@ class Tree:
             for p in self._subtree_postorder(self.root()):
                 yield p
 
-    def _subtree_postorder(seflf, p):
+    def _subtree_postorder(self, p):
         """Generate a postorder iteration of positions in subtree rooted at p"""
         for c in self.children(p):
             for other in self._subtree_postorder(c):
@@ -126,6 +127,18 @@ class Tree:
                 yield p
                 for c in self.children(p):
                     fringe.enqueue(c)
+
+    def parenthesize(self, p):
+        """Print parenthesized representation of subtree of T rooted at p"""
+        print(p.element(), end="")
+        if not self.is_leaf(p):
+            first_time = True
+            for c in self.children(p):
+                sep = " (" if first_time else ", "
+                print(sep, end="")
+                first_time = False
+                parenthesize(self, c)
+            print(")", end="")
 
 
 if __name__ == "__main__":
