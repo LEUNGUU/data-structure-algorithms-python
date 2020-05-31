@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from LinkedQueue import LinkedQueue
+
 
 class Tree:
     """Abstract base class representing a tree structure"""

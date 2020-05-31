@@ -59,10 +59,11 @@ class BinaryTree(Tree):
                 yield other
 
     def positions(self):
-        """Generate an iteration of the tree's positions"""
+        """Generate an iteration of the tree's positions, use inorder by default"""
         #return self.preorder()
         #return self.postorder()
         return self.inorder()
+        # return self.breadthfirst()
 
 
 if __name__ == "__main__":
